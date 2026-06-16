@@ -20,3 +20,17 @@ A Volunteer Registration System built using Flask, SQLite, HTML, CSS, and Bootst
 
 pip install -r requirements.txt
 python app.py
+
+## Screenshots
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Registration Page
+![Register](screenshots/register.png)
+
+### Admin Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Volunteer Form
+![Volunteer Form](screenshots/volunteer-form.png)
