@@ -24,13 +24,13 @@ python app.py
 ## Screenshots
 
 ### Login Page
-![Login](screenshots/login.png)
+![Login](login.png)
 
 ### Registration Page
-![Register](screenshots/register.png)
+![Register](register.png)
 
 ### Admin Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](admindashboard.png)
 
 ### Volunteer Form
-![Volunteer Form](screenshots/volunteer-form.png)
+![Volunteer Form](volunteerform.png)
