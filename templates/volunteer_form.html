@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h4 class="card-title mb-4">
+          <i class="bi bi-clipboard2-heart-fill me-2"></i>
+          {{ 'Edit Volunteer' if edit else 'Volunteer Registration' }}
+        </h4>
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input name="name" class="form-control" value="{{ v.name if v else '' }}" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" value="{{ v.email if v else '' }}" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input name="phone" class="form-control" value="{{ v.phone if v else '' }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Skills</label>
+            <input name="skills" class="form-control" placeholder="e.g. Teaching, Coding, Driving" value="{{ v.skills if v else '' }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Availability</label>
+            <select name="availability" class="form-select">
+              {% for opt in ['Weekdays', 'Weekends', 'Full-time', 'Part-time'] %}
+                <option value="{{ opt }}" {{ 'selected' if v and v.availability == opt else '' }}>{{ opt }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary">{{ 'Update' if edit else 'Register' }}</button>
+            {% if edit %}
+              <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

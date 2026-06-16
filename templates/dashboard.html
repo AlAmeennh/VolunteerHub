@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</h4>
+  <a href="{{ url_for('export_csv') }}" class="btn btn-success btn-sm">
+    <i class="bi bi-file-earmark-spreadsheet me-1"></i>Export CSV
+  </a>
+</div>
+
+<div class="card shadow-sm">
+  <div class="card-body p-0">
+    <table class="table table-hover table-striped mb-0">
+      <thead class="table-primary">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Skills</th>
+          <th>Availability</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for v in volunteers %}
+        <tr>
+          <td>{{ v.id }}</td>
+          <td>{{ v.name }}</td>
+          <td>{{ v.email }}</td>
+          <td>{{ v.phone }}</td>
+          <td>{{ v.skills }}</td>
+          <td><span class="badge bg-info text-dark">{{ v.availability }}</span></td>
+          <td>
+            <a href="{{ url_for('edit_volunteer', vid=v.id) }}" class="btn btn-warning btn-sm">
+              <i class="bi bi-pencil"></i>
+            </a>
+            <form method="POST" action="{{ url_for('delete_volunteer', vid=v.id) }}" class="d-inline"
+                  onsubmit="return confirm('Delete this volunteer?')">
+              <button class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center text-muted py-4">No volunteers registered yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<p class="text-muted small mt-2">Total: {{ volunteers | length }} volunteer(s)</p>
+{% endblock %}
